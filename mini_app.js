@@ -48,22 +48,57 @@ class NumberGuessingGame {
         this.attemptsCount = document.getElementById('attempts-count');
         this.rangeDisplay = document.getElementById('range-display');
         this.resultMessage = document.getElementById('result-message');
+        
+        // Проверяем, что все элементы найдены
+        if (!this.guessInput || !this.guessButton || !this.newGameButton || !this.hintButton) {
+            console.error('Не найдены необходимые элементы!');
+            return;
+        }
+        
+        console.log('Все элементы инициализированы успешно');
     }
 
     setupEventListeners() {
-        this.guessButton.addEventListener('click', () => this.makeGuess());
-        this.newGameButton.addEventListener('click', () => this.startNewGame());
-        this.hintButton.addEventListener('click', () => this.showHint());
-        
-        this.guessInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
+        // Проверяем, что элементы существуют перед добавлением слушателей
+        if (this.guessButton) {
+            this.guessButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Кнопка "Угадать" нажата');
                 this.makeGuess();
-            }
-        });
+            });
+        }
+        
+        if (this.newGameButton) {
+            this.newGameButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Кнопка "Новая игра" нажата');
+                this.startNewGame();
+            });
+        }
+        
+        if (this.hintButton) {
+            this.hintButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Кнопка "Подсказка" нажата');
+                this.showHint();
+            });
+        }
+        
+        if (this.guessInput) {
+            this.guessInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    console.log('Enter нажат в поле ввода');
+                    this.makeGuess();
+                }
+            });
 
-        this.guessInput.addEventListener('input', () => {
-            this.validateInput();
-        });
+            this.guessInput.addEventListener('input', () => {
+                this.validateInput();
+            });
+        }
+        
+        console.log('Слушатели событий настроены');
     }
 
     generateSecretNumber() {
@@ -205,7 +240,24 @@ class NumberGuessingGame {
 
 // Инициализация игры при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
-    new NumberGuessingGame();
+    console.log('DOM загружен, инициализируем игру...');
+    
+    // Проверяем наличие необходимых элементов
+    const requiredElements = ['guess-input', 'guess-button', 'new-game-button', 'hint-button'];
+    const missingElements = requiredElements.filter(id => !document.getElementById(id));
+    
+    if (missingElements.length > 0) {
+        console.error('Отсутствуют элементы:', missingElements);
+    } else {
+        console.log('Все необходимые элементы найдены');
+    }
+    
+    try {
+        new NumberGuessingGame();
+        console.log('Игра успешно инициализирована');
+    } catch (error) {
+        console.error('Ошибка при инициализации игры:', error);
+    }
 });
 
 // Обработка изменения размера экрана
