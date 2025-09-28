@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Угадай число - Мини-приложение</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="mini_app.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 Угадай число</h1>
+            <p class="subtitle">Я загадал число от 1 до 100. Попробуй угадать!</p>
+        </div>
+
+        <div class="game-area">
+            <div class="game-info">
+                <div class="attempts">
+                    <span>Попыток: </span>
+                    <span id="attempts-count">0</span>
+                </div>
+                <div class="range">
+                    <span>Диапазон: </span>
+                    <span id="range-display">1 - 100</span>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <input type="number" id="guess-input" placeholder="Введите число от 1 до 100" min="1" max="100">
+                <button id="guess-button">Угадать</button>
+            </div>
+
+            <div class="result-section">
+                <div id="result-message" class="result-message"></div>
+            </div>
+
+            <div class="controls">
+                <button id="new-game-button" class="new-game-btn">Новая игра</button>
+                <button id="hint-button" class="hint-btn">Подсказка</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Используйте кнопки ниже для управления игрой</p>
+        </div>
+    </div>
+
+    <script src="mini_app.js"></script>
+</body>
+</html>
