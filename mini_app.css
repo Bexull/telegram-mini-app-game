@@ -1,4 +1,4 @@
-/* Telegram Mini App стили */
+/* Telegram Mini App стили - Улучшенный дизайн */
 * {
     margin: 0;
     padding: 0;
@@ -7,19 +7,25 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--tg-theme-bg-color, #ffffff);
-    color: var(--tg-theme-text-color, #000000);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
     line-height: 1.6;
     min-height: 100vh;
+    transition: all 0.3s ease;
 }
 
 .container {
     max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    min-height: 100vh;
+    margin: 10px auto;
+    padding: 30px;
+    min-height: calc(100vh - 20px);
     display: flex;
     flex-direction: column;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .header {
@@ -28,50 +34,45 @@ body {
 }
 
 .header h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: var(--tg-theme-text-color, #000000);
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 800;
 }
 
 .subtitle {
-    color: var(--tg-theme-hint-color, #999999);
-    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .game-area {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .game-info {
     display: flex;
     justify-content: space-between;
-    background: var(--tg-theme-secondary-bg-color, #f8f9fa);
-    padding: 15px;
-    border-radius: 12px;
-    font-weight: 500;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
 }
 
 .attempts, .range {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
 }
 
-.attempts span:first-child,
-.range span:first-child {
-    font-size: 12px;
-    color: var(--tg-theme-hint-color, #999999);
-}
-
-.attempts span:last-child,
-.range span:last-child {
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--tg-theme-button-color, #2481cc);
+.attempts span:last-child, .range span:last-child {
+    color: #ffd700;
+    font-size: 20px;
+    font-weight: 800;
 }
 
 .input-section {
@@ -82,48 +83,60 @@ body {
 
 #guess-input {
     width: 100%;
-    padding: 15px;
-    border: 2px solid var(--tg-theme-button-color, #2481cc);
-    border-radius: 12px;
+    padding: 18px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
     font-size: 18px;
+    font-weight: 600;
     text-align: center;
-    background: var(--tg-theme-bg-color, #ffffff);
-    color: var(--tg-theme-text-color, #000000);
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-#guess-input:focus {
-    border-color: var(--tg-theme-button-color, #2481cc);
-    box-shadow: 0 0 0 3px rgba(36, 129, 204, 0.1);
-}
-
-#guess-button {
-    width: 100%;
-    padding: 15px;
-    background: var(--tg-theme-button-color, #2481cc);
-    color: var(--tg-theme-button-text-color, #ffffff);
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    backdrop-filter: blur(5px);
     transition: all 0.3s ease;
 }
 
+#guess-input:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    transform: scale(1.02);
+}
+
+#guess-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#guess-button {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: #ffffff;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 #guess-button:hover {
-    background: var(--tg-theme-button-color, #1a6bb3);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+    background: linear-gradient(45deg, #ff5252, #d63031);
 }
 
 #guess-button:active {
-    transform: translateY(0);
+    transform: translateY(-1px) scale(1.02);
 }
 
 #guess-button:disabled {
-    background: var(--tg-theme-hint-color, #999999);
+    opacity: 0.5;
     cursor: not-allowed;
     transform: none;
+    background: #95a5a6;
+    box-shadow: none;
 }
 
 .result-section {
@@ -136,67 +149,81 @@ body {
 .result-message {
     text-align: center;
     font-size: 18px;
-    font-weight: 500;
-    padding: 15px;
-    border-radius: 12px;
+    font-weight: 600;
+    padding: 15px 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
 }
 
 .result-message.success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.result-message.hint {
-    background: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeaa7;
+    background: linear-gradient(45deg, #00b894, #00a085);
+    color: #ffffff;
+    animation: pulse 0.5s ease-in-out;
 }
 
 .result-message.error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background: linear-gradient(45deg, #e17055, #d63031);
+    color: #ffffff;
+    animation: shake 0.5s ease-in-out;
+}
+
+.result-message.hint {
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    color: #ffffff;
+    animation: pulse 0.3s ease-in-out;
 }
 
 .controls {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 15px;
+    justify-content: center;
 }
 
 .new-game-btn, .hint-btn {
-    flex: 1;
-    padding: 12px;
-    border: 2px solid var(--tg-theme-button-color, #2481cc);
-    background: transparent;
-    color: var(--tg-theme-button-color, #2481cc);
-    border-radius: 12px;
+    background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+    color: #ffffff;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 20px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+    flex: 1;
+    max-width: 150px;
 }
 
 .new-game-btn:hover, .hint-btn:hover {
-    background: var(--tg-theme-button-color, #2481cc);
-    color: var(--tg-theme-button-text-color, #ffffff);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+    background: linear-gradient(45deg, #5f3dc4, #9775fa);
+}
+
+.new-game-btn:active, .hint-btn:active {
+    transform: translateY(0) scale(1.02);
 }
 
 .footer {
     text-align: center;
-    margin-top: 30px;
-    padding: 20px;
-    color: var(--tg-theme-hint-color, #999999);
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
 }
 
 /* Анимации */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -207,12 +234,6 @@ body {
     animation: shake 0.5s ease-in-out;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
 .pulse {
     animation: pulse 0.3s ease-in-out;
 }
@@ -220,20 +241,31 @@ body {
 /* Адаптивность */
 @media (max-width: 480px) {
     .container {
-        padding: 15px;
+        margin: 5px;
+        padding: 20px;
+        border-radius: 20px;
     }
     
     .header h1 {
-        font-size: 24px;
+        font-size: 28px;
     }
     
-    .game-info {
+    .subtitle {
+        font-size: 16px;
+    }
+    
+    .controls {
         flex-direction: column;
-        gap: 10px;
     }
     
-    .attempts, .range {
-        flex-direction: row;
-        justify-content: space-between;
+    .new-game-btn, .hint-btn {
+        max-width: none;
+    }
+}
+
+/* Темная тема Telegram */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
     }
 }
