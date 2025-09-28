@@ -35,7 +35,7 @@
       ]
     },
     {
-      "source": "/(.*\\.(html|htm))",
+      "source": "/(.*\\.html)",
       "headers": [
         {
           "key": "Content-Type",
