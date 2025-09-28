@@ -1,0 +1,239 @@
+/* Telegram Mini App стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--tg-theme-bg-color, #ffffff);
+    color: var(--tg-theme-text-color, #000000);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--tg-theme-text-color, #000000);
+}
+
+.subtitle {
+    color: var(--tg-theme-hint-color, #999999);
+    font-size: 16px;
+}
+
+.game-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    background: var(--tg-theme-secondary-bg-color, #f8f9fa);
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.attempts, .range {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.attempts span:first-child,
+.range span:first-child {
+    font-size: 12px;
+    color: var(--tg-theme-hint-color, #999999);
+}
+
+.attempts span:last-child,
+.range span:last-child {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--tg-theme-button-color, #2481cc);
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#guess-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--tg-theme-button-color, #2481cc);
+    border-radius: 12px;
+    font-size: 18px;
+    text-align: center;
+    background: var(--tg-theme-bg-color, #ffffff);
+    color: var(--tg-theme-text-color, #000000);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#guess-input:focus {
+    border-color: var(--tg-theme-button-color, #2481cc);
+    box-shadow: 0 0 0 3px rgba(36, 129, 204, 0.1);
+}
+
+#guess-button {
+    width: 100%;
+    padding: 15px;
+    background: var(--tg-theme-button-color, #2481cc);
+    color: var(--tg-theme-button-text-color, #ffffff);
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#guess-button:hover {
+    background: var(--tg-theme-button-color, #1a6bb3);
+    transform: translateY(-2px);
+}
+
+#guess-button:active {
+    transform: translateY(0);
+}
+
+#guess-button:disabled {
+    background: var(--tg-theme-hint-color, #999999);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.result-section {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-message {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px;
+    border-radius: 12px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.result-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.result-message.hint {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.result-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.new-game-btn, .hint-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--tg-theme-button-color, #2481cc);
+    background: transparent;
+    color: var(--tg-theme-button-color, #2481cc);
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.new-game-btn:hover, .hint-btn:hover {
+    background: var(--tg-theme-button-color, #2481cc);
+    color: var(--tg-theme-button-text-color, #ffffff);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    color: var(--tg-theme-hint-color, #999999);
+    font-size: 14px;
+}
+
+/* Анимации */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 0.3s ease-in-out;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header h1 {
+        font-size: 24px;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .attempts, .range {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
